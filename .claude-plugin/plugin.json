@@ -1,0 +1,13 @@
+{
+  "name": "genieseo",
+  "displayName": "GenieSEO",
+  "version": "1.0.0",
+  "description": "Connect Google Search Console and GA4 to Claude through the GenieSEO connector, with skills for SEO analysis from quick reports to advanced cross-referencing.",
+  "author": { "name": "Peakenza Software Services" },
+  "homepage": "https://seo.geniedial.in",
+  "repository": "https://github.com/nrvmodi/genieseo-claude-plugin",
+  "license": "MIT",
+  "keywords": ["seo", "google-search-console", "ga4", "analytics", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
