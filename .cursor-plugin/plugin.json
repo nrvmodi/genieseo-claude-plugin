@@ -11,12 +11,10 @@
   "repository": "https://github.com/nrvmodi/genieseo-claude-plugin",
   "license": "MIT",
   "keywords": [
-    "seo",
-    "google-search-console",
+    "genieseo",
+    "google search console",
     "ga4",
-    "analytics",
-    "mcp",
-    "cursor-plugin"
+    "seo analytics"
   ],
   "logo": "assets/logo.png",
   "skills": "./skills/",

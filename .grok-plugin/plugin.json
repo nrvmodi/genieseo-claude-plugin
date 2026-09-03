@@ -1,0 +1,22 @@
+{
+  "name": "genieseo",
+  "displayName": "GenieSEO",
+  "version": "1.0.0",
+  "description": "Turn Google Search Console and GA4 data into actionable SEO insights, from quick reports to advanced cross-referencing.",
+  "author": {
+    "name": "Peakenza Software Services",
+    "email": "contact@geniedial.in"
+  },
+  "homepage": "https://seo.geniedial.in",
+  "repository": "https://github.com/nrvmodi/genieseo-claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "genieseo",
+    "google search console",
+    "ga4",
+    "seo analytics"
+  ],
+  "logo": "assets/logo.png",
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}

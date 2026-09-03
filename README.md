@@ -1,6 +1,6 @@
 # GenieSEO — SEO & Analytics Plugin
 
-GenieSEO connects Google Search Console and Google Analytics 4 to Cursor and Claude Code — turning your AI assistant into a full-time SEO analyst, keyword research tool, rank tracker, and technical SEO auditor. No dashboard logins, no CSV exports, no pivot tables.
+GenieSEO connects Google Search Console and Google Analytics 4 to Grok Build, Cursor, and Claude Code — turning your AI assistant into a full-time SEO analyst, keyword research tool, rank tracker, and technical SEO auditor. No dashboard logins, no CSV exports, no pivot tables.
 
 Whether you need an SEO MCP, Google Search Console MCP, GA4 MCP, keyword research MCP, or rank tracking MCP, this single plugin provides all of it. Ask in plain English; answers come live from Google's official Search Console and Analytics Data APIs.
 
@@ -19,12 +19,25 @@ Built for founders, content marketers, e-commerce store owners, agencies, and SE
 
 ## Installation & Setup
 
+### Grok Build
+To add GenieSEO from the xAI Plugin Marketplace catalog (`.grok-plugin/marketplace.json`):
+```json
+{
+  "name": "genieseo",
+  "source": {
+    "type": "github",
+    "repo": "nrvmodi/genieseo-claude-plugin",
+    "sha": "<pinned-commit-sha>"
+  }
+}
+```
+
 ### Cursor IDE
-- **From Marketplace**: Search for `genieseo` under **Cursor Settings > Plugins**.
-- **Local Testing**: Go to **Cursor Settings > Plugins > Add Local Plugin** and select this directory.
+- **Marketplace**: Search for `genieseo` under **Cursor Settings > Plugins**.
+- **Local Plugin**: Go to **Cursor Settings > Plugins > Add Local Plugin** and select this directory.
 
 ### Claude Code
-- **From Marketplace**:
+- **Marketplace**:
   ```bash
   /plugin marketplace add anthropics/claude-plugins-community
   /plugin install genieseo@claude-community
@@ -59,6 +72,14 @@ This plugin's MCP server (`genieseo`) connects to the hosted `https://seo.genied
 - `content-decay-detection` — Pages experiencing sustained click decline across three consecutive periods.
 - `structured-data-audit` — Audit for structured data errors and FAQ/HowTo schema opportunities.
 - `international-traffic-audit` — Country-level performance breakdown and localization/hreflang opportunities.
+
+---
+
+## Security & Privacy Compliance
+
+- **No Code Execution**: Contains no postinstall scripts, binary downloads, or shell execution.
+- **Data Protection**: Uses read-only OAuth scopes to query Google Search Console and GA4 data for the signed-in user. No user data is logged, sold, or used for model training.
+- **Brand Scoping**: All keywords and domains are product-scoped (`genieseo`, `google search console`, `ga4`).
 
 ---
 
