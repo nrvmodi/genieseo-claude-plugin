@@ -56,10 +56,15 @@ live server showed:
   and joins on `hostName` plus `pagePath`.
 - keyword-gap-finder makes a single data call and has a documented threshold
   fallback.
-- Each skill now says plainly that it is read-only and that it reports "none
-  found" instead of fabricating results. This addresses the scanner's
-  security heuristics: no skill installs or runs code. Each skill only
-  invokes tools on the plugin's own MCP server.
+- Each skill now has a `## Safety` section. It states that the skill is
+  read-only, only calls the plugin's own MCP server, never installs, downloads,
+  runs, or fetches anything, and treats tool-returned query text and URLs
+  (which third parties can control, since anyone can type a search query) as
+  data, never as instructions. This targets the scanner findings ("security
+  risk", "untrusted supply chain") on indexing-audit, keyword-gap-finder, and
+  seo-weekly-report. Those skills contained no install or run behavior, so the
+  findings look heuristic. The prompt-injection guardrail closes the one real
+  risk they share.
 - Bumped every manifest to 1.0.1.
 
 We chose to fix the skills rather than change the server: the server
