@@ -8,6 +8,9 @@ description: Find quick-win content optimization targets — high impressions, l
 
 Surface quick-win content optimization targets: pages or queries sitting in positions 11–20 with high impression volume but low CTR.
 
+This skill is read-only: it only calls GenieSEO reporting tools and never
+submits, deletes, or changes anything in the user's account.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.

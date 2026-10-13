@@ -12,6 +12,9 @@ Break Search Console performance down by country to find where
 localization or hreflang would help — and which international queries have
 no localized page to catch them.
 
+This skill is read-only: it only calls GenieSEO reporting tools and never
+submits, deletes, or changes anything in the user's account.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.

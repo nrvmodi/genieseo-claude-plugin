@@ -8,6 +8,9 @@ description: Detect keyword cannibalization — queries where multiple pages com
 
 Identify queries where multiple pages on the same site are competing for rankings.
 
+This skill is read-only: it only calls GenieSEO reporting tools and never
+submits, deletes, or changes anything in the user's account.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.

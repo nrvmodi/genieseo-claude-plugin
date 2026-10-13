@@ -10,24 +10,27 @@ description: Detect content decay — pages with sustained click declines
 Find pages where clicks have quietly dropped for three consecutive 28-day
 periods — decay usually shows up here weeks before traffic craters.
 
+This skill is read-only: it only calls GenieSEO reporting tools and never
+submits, deletes, or changes anything in the user's account.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.
+   Define three non-overlapping 28-day windows (YYYY-MM-DD):
+   - Period A: today minus 28 days → today minus 1 day (most recent)
+   - Period B: today minus 56 days → today minus 29 days
+   - Period C: today minus 84 days → today minus 57 days
 2. Call `compare_search_periods` with `dimensions=page`, `limit=1000`,
-   comparing:
-   - `period1` = Period A, the most recent 28 days (today minus 28 to today)
-   - `period2` = Period B, the prior 28 days (today minus 56 to today
-     minus 28)
+   `period1_start`/`period1_end` = Period B and
+   `period2_start`/`period2_end` = Period A. In the result, `p1_clicks` is
+   Period B and `p2_clicks` is Period A.
 3. Call `compare_search_periods` again with `dimensions=page`, `limit=1000`,
-   comparing:
-   - `period1` = Period B, the same range as above (today minus 56 to
-     today minus 28)
-   - `period2` = Period C, the 28 days before that (today minus 84 to
-     today minus 56)
-   Combine the two calls: for each page you now have clicks/impressions for
-   periods A and B (from the first call) and periods B and C (from the
-   second call). Use the two calls' overlapping period-B figures as a
-   sanity cross-check — they should match.
+   `period1_start`/`period1_end` = Period C and
+   `period2_start`/`period2_end` = Period B. Here `p1_clicks` is Period C
+   and `p2_clicks` is Period B.
+   Combine the two calls by page (`key`). Use the raw `p1_clicks` /
+   `p2_clicks` values, not `click_diff`/`click_pct`. The two calls'
+   period-B figures should match — use that as a sanity cross-check.
 4. For every page present in all three periods, flag it if:
    - clicks in A <= 0.85 x clicks in B, AND
    - clicks in B <= 0.85 x clicks in C
@@ -35,7 +38,7 @@ periods — decay usually shows up here weeks before traffic craters.
 5. Sort flagged pages by total clicks lost (clicks in C minus clicks in A)
    descending.
 6. For the top 15 decaying pages, call `get_search_by_page_query` with
-   `days=28` (period A = the most recent 28 days) and `row_limit=5` to get
+   `page_url` = the page, `days=28` (period A = the most recent 28 days) and `row_limit=5` to get
    each page's top 5 queries still generating impressions, with each
    query's impressions and average position.
 7. Assign a refresh priority to each of the top 15 pages:

@@ -11,15 +11,20 @@ description: Find keyword gap opportunities — queries ranking 11-50 with real
 Surface the best keyword gap opportunities: queries with real search demand
 where the site ranks on page 2–5 but already has topical relevance.
 
+This skill is read-only: it only calls GenieSEO reporting tools and never
+submits, deletes, or changes anything in the user's account.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.
-2. Call `get_advanced_search_analytics` with `dimensions=query,page`,
+2. Call `get_advanced_search_analytics` once with `dimensions=query,page`,
    `sort_by=impressions`, `sort_direction=descending`, `row_limit=1000`,
-   `start_date` = 28 days ago, `end_date` = today.
-3. Filter the results to rows where `position` is between **11 and 50** and
-   `impressions` >= **500**.
-4. Group the filtered rows by landing `page`. For each group, identify:
+   `start_date` = 28 days ago, `end_date` = today. Every later step works on
+   these returned rows — no further tool calls are needed.
+3. Gap rows: keep rows where `position` is between **11 and 50** and
+   `impressions` >= **500**. If no rows meet the 500-impression threshold,
+   lower it to 100, and say in the report that you did.
+4. Group the gap rows by landing `page`. For each group, identify:
    - The cluster theme (3–5 words describing the shared topic across the
      group's queries)
    - The top 3 queries by impressions, with each query's impressions and
@@ -32,12 +37,11 @@ where the site ranks on page 2–5 but already has topical relevance.
    - `TARGET_FEATURED_SNIPPET` — query phrasing suggests a definition or
      step-list answer
    - `ADD_FAQ_SCHEMA` — multiple question-style queries in the group
-6. Call `get_advanced_search_analytics` with `dimensions=query,page`,
-   `sort_by=impressions`, `sort_direction=descending`, `row_limit=1000`,
-   `start_date`/`end_date` for the same date range as step 2, and filter
-   to rows where `position` <= 10. For each landing-page group from step 4,
-   pick the highest-relevance page from this position <=10 set as the
-   internal-linking source candidate.
+6. Link sources: from the same step-2 rows, take rows where `position` <= 10.
+   For each landing-page group, pick the page from this set whose queries
+   are most topically related to the group's cluster theme (and isn't the
+   landing page itself) as the internal-linking source. If none is related,
+   write "none found".
 7. Sort the final groups by total impressions descending.
 
 ## Output format
@@ -45,4 +49,4 @@ where the site ranks on page 2–5 but already has topical relevance.
 A summary table (landing page | cluster theme | total impressions | top
 query | recommendation | link-source page), followed by one detailed
 subsection per landing-page group listing all 3 top queries with their
-impressions and average position.
+impressions and average position. If no gaps are found, say so plainly.
