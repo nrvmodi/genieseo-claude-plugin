@@ -104,3 +104,10 @@ listing. Subtitle "SEO MCP for GSC & GA4" (21 chars). Category
 HTTP 200 on 2026-10-13. The spec has no support-URL field, so the support URL
 (`https://seo.geniedial.in/feedback`) goes in the dashboard's review
 information form.
+
+**Follow-up 2:** The upload was rejected with "`interface.capabilities` must be
+a list of strings". The OpenAI validator (`plugins/plugin-eval`) requires that
+field, so it is now set to `["Read", "Write"]`. Official plugins use the values
+`Interactive`, `Read`, and `Write`. We declare Write because the bundled MCP
+server exposes sitemap and site write tools, even though every skill is
+read-only.

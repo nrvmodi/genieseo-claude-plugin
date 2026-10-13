@@ -10,7 +10,12 @@
   "homepage": "https://seo.geniedial.in/",
   "repository": "https://github.com/nrvmodi/genieseo-claude-plugin",
   "license": "MIT",
-  "keywords": ["genieseo", "google search console", "ga4", "seo analytics"],
+  "keywords": [
+    "genieseo",
+    "google search console",
+    "ga4",
+    "seo analytics"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -19,6 +24,10 @@
     "longDescription": "GenieSEO turns Google Search Console and Google Analytics 4 data into clear, actionable SEO insights. Connect your Google account to analyze clicks, impressions, CTR, rankings, landing pages, countries and devices; find keyword gaps, content decay, cannibalization and low-CTR quick wins; audit indexing and rich results; and cross-reference organic queries with GA4 conversions and revenue. All nine skills are read-only.",
     "developerName": "GenieSeo",
     "category": "Data & Analytics",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://seo.geniedial.in/",
     "privacyPolicyURL": "https://seo.geniedial.in/privacy",
     "termsOfServiceURL": "https://seo.geniedial.in/terms",
