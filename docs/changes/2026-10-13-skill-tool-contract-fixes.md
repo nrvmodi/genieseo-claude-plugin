@@ -84,3 +84,23 @@ Live calls on 2026-10-13 against `sc-domain:geniedial.in` / GA4 property
   indexing_state, google_canonical, user_canonical`.
 - `run_ga4_report` with `dimension_filter_field=sessionDefaultChannelGroup`,
   `value=Organic Search` returned filtered rows (`/`: 17 sessions).
+
+## Follow-up: OpenAI listing metadata (`.codex-plugin/plugin.json`)
+
+**Problem:** After uploading the 1.0.1 ZIP, the OpenAI draft showed these
+blocking findings: subtitle over 30 characters, and missing website, support,
+privacy, and terms URLs and app icon. The category also came through as "Other".
+
+**Root cause:** The OpenAI plugin uploader reads metadata from
+`.codex-plugin/plugin.json` (`interface` block; spec in
+`openai/plugins` → `.agents/skills/plugin-creator/references/plugin-json-spec.md`).
+The ZIP had only the Claude manifest, so OpenAI used its `description` as the
+subtitle and found no URLs, icon, or category.
+
+**Fix:** Added `.codex-plugin/plugin.json` with the values from the 1.0.0
+listing. Subtitle "SEO MCP for GSC & GA4" (21 chars). Category
+"Data & Analytics". Website `https://seo.geniedial.in/`, plus `/privacy` and
+`/terms`. Icon and logo use `assets/logo.png` (1024×1024). All URLs returned
+HTTP 200 on 2026-10-13. The spec has no support-URL field, so the support URL
+(`https://seo.geniedial.in/feedback`) goes in the dashboard's review
+information form.
