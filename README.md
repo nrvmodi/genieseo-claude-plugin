@@ -78,6 +78,8 @@ This plugin's MCP server (`genieseo`) connects to the hosted `https://seo.genied
 ## Security & Privacy Compliance
 
 - **No Code Execution**: Contains no postinstall scripts, binary downloads, or shell execution.
+- **No Remote Code Loading**: All skills perform read-only analytical queries. No code, scripts, or schemas are loaded, installed, or executed from mutable or untrusted sources.
+- **Strict Domain Scoping**: URL inspection and auditing workflows strictly validate and restrict URLs to the authenticated, verified site property domain.
 - **Data Protection**: Uses read-only OAuth scopes to query Google Search Console and GA4 data for the signed-in user. No user data is logged, sold, or used for model training.
 - **Brand Scoping**: All keywords and domains are product-scoped (`genieseo`, `google search console`, `ga4`).
 
