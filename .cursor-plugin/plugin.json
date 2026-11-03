@@ -1,7 +1,7 @@
 {
   "name": "genieseo",
   "displayName": "GenieSEO",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn Google Search Console and GA4 data into actionable SEO insights, from quick reports to advanced cross-referencing.",
   "author": {
     "name": "Peakenza Software Services",

@@ -49,3 +49,19 @@ The automated policy didn't flag these, but the human reviewer reads the listing
   confirmed in `google-search-console-mcp/orchestrator/app/config.py`. Only
   GA4 uses `analytics.readonly`. The README now says so and links the privacy
   policy.
+
+## Alignment with the published guidelines
+Checked against the plugins reference, the pre-submission checklist and the
+Anthropic Software Directory Policy:
+- `logo` → `icon: "./assets/logo.png"`. `icon` is the listing field the
+  directory reads, and component paths must start with `./`. The Cursor and
+  Grok manifests keep `logo`.
+- Added the listing URLs `termsOfServiceUrl`, `documentationUrl` and
+  `supportUrl`. The support URL points to GitHub issues, because the policy (3B)
+  requires a support channel and seo.geniedial.in has no /support or /contact
+  page. Each URL was confirmed live (200) before adding it.
+- `version` 1.0.0 → 1.0.1 in all manifests. The directory asks for a version
+  bump on every release, and two different commits had both shipped as 1.0.0.
+- The local `claude plugin validate --strict` still warns on the listing
+  fields (`icon`, `*Url`). The CLI ignores them at load time, and the
+  directory reads them, so the warnings are expected.
