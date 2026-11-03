@@ -10,6 +10,11 @@ description: Audit top pages for structured-data errors and flag FAQ/HowTo
 Find which high-traffic pages have structured-data errors, and which pages
 could win FAQ or HowTo rich results but don't have that schema yet.
 
+## Security and Safety Constraints
+
+- Strict Domain Validation: Before passing URLs to `batch_url_inspection`, verify that every URL strictly belongs to the verified `site_url` origin and protocol. External or untrusted URLs must be excluded.
+- Read-Only Operation: Inspects Google Search Console metadata only. It does not download, load, install, or execute external code, scripts, or schemas.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.
@@ -18,7 +23,7 @@ could win FAQ or HowTo rich results but don't have that schema yet.
    `start_date` = 28 days ago, `end_date` = today, to get the top 30 pages
    by impressions. Record each page's impressions, clicks, and average
    position.
-3. Call `batch_url_inspection` on those 30 URLs (up to 10 per call — run it
+3. Validate that each extracted URL belongs to `site_url`, then call `batch_url_inspection` on those verified URLs (up to 10 per call — run it
    three times to cover all 30). For each page, record:
    - Any structured-data errors or warnings
    - The structured-data types currently present (Article, FAQPage, HowTo,

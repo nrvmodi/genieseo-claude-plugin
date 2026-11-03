@@ -11,6 +11,11 @@ description: Find keyword gap opportunities — queries ranking 11-50 with real
 Surface the best keyword gap opportunities: queries with real search demand
 where the site ranks on page 2–5 but already has topical relevance.
 
+## Security and Safety Constraints
+
+- Read-Only Analysis: This skill performs read-only analytical queries against Google Search Console data. It does not install, download, or execute code, packages, or scripts from untrusted or mutable sources.
+- Safe Editorial Guidance: Recommendations such as `ADD_FAQ_SCHEMA` or `ADD_SECTION` are purely textual, editorial recommendations for the site owner. Query values are treated strictly as sanitized plain text, not executable scripts.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url`.

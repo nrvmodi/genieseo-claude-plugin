@@ -8,6 +8,11 @@ description: Generate a complete weekly SEO performance report for a site.
 
 Generate a full weekly SEO performance report for a Google Search Console property.
 
+## Security and Safety Constraints
+
+- Read-Only Operation: All tool invocations (`list_properties`, `get_performance_overview`, `compare_search_periods`, `get_search_analytics`) are non-destructive, read-only analytical queries strictly bounded to the authorized property.
+- Zero Dynamic Code Execution: This skill aggregates statistical metrics. It does not install, download, load, or execute any packages, code, or scripts from untrusted or mutable sources.
+
 ## Steps
 
 1. Call `list_properties` to confirm the exact `site_url` to use.
