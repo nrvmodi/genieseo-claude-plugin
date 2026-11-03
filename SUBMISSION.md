@@ -23,7 +23,7 @@ advanced quarterly analysis.
 
 **Repository**: https://github.com/nrvmodi/genieseo-claude-plugin
 
-**Version**: 1.0.0 · **Author**: Peakenza Software Services · **License**:
+**Version**: 1.0.1 · **Author**: Peakenza Software Services · **License**:
 MIT · **Homepage**: https://seo.geniedial.in (these are already set in
 `.claude-plugin/plugin.json` — surfaced here since the submission form will
 ask for them separately).
@@ -76,4 +76,4 @@ ask for them separately).
   ChatGPT/Codex submission in the main repo
   ([nrvmodi/google-search-console-mcp](https://github.com/nrvmodi/google-search-console-mcp),
   `docs/MCP-REGISTRY-SUBMISSION.md`); re-check there if annotations change.
-- [ ] Release notes drafted for version 1.0.0.
+- [ ] Release notes drafted for version 1.0.1.

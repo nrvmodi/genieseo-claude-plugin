@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "genieseo": {
-      "type": "http",
-      "url": "https://seo.geniedial.in/mcp"
-    }
-  }
-}
