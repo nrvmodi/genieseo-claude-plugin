@@ -6,7 +6,7 @@ Grok. The MCP server itself lives in `nrvmodi/google-search-console-mcp`.
 ## Layout
 - `.claude-plugin/plugin.json` — Claude manifest (what the Claude directory scans).
 - `.cursor-plugin/plugin.json`, `.grok-plugin/plugin.json`, root `plugin.json` — other tools' copies.
-- `mcp.json` — shared MCP server definition used by all manifests. `.mcp.json` is the older Claude-only copy.
+- `mcp.json` — the one MCP server definition, shared by all manifests. Don't re-add a root `.mcp.json`: Claude Code also loads it by default, giving a second `genieseo` definition.
 - `skills/<name>/SKILL.md` — the 9 skills.
 - `SUBMISSION.md` — listing copy for the submission form (not loaded by Claude).
 

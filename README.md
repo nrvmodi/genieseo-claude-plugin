@@ -1,8 +1,6 @@
 # GenieSEO — SEO & Analytics Plugin
 
-GenieSEO connects Google Search Console and Google Analytics 4 to Grok Build, Cursor, and Claude Code — turning your AI assistant into a full-time SEO analyst, keyword research tool, rank tracker, and technical SEO auditor. No dashboard logins, no CSV exports, no pivot tables.
-
-Whether you need an SEO MCP, Google Search Console MCP, GA4 MCP, keyword research MCP, or rank tracking MCP, this single plugin provides all of it. Ask in plain English; answers come live from Google's official Search Console and Analytics Data APIs.
+GenieSEO connects Google Search Console and Google Analytics 4 to Claude Code, Cursor, and Grok Build through the hosted GenieSEO MCP server, plus 9 skills for SEO analysis. Ask in plain English; answers come live from Google's Search Console and Analytics Data APIs.
 
 ## Highlights
 
@@ -53,7 +51,7 @@ To add GenieSEO from the xAI Plugin Marketplace catalog (`.grok-plugin/marketpla
 
 This plugin's MCP server (`genieseo`) connects to the hosted `https://seo.geniedial.in/mcp` endpoint.
 
-1. On first use, follow the OAuth authorization prompt to grant read-only access to your Google Search Console and GA4 accounts.
+1. On first use, follow the OAuth authorization prompt to grant access to your Google Search Console account (read and write, used for sitemap submit/delete and adding sites, only when you ask) and your GA4 account (read-only).
 2. No local Python or Google Cloud OAuth client setup is required — self-hosting options are documented in the [main repository](https://github.com/nrvmodi/google-search-console-mcp#readme).
 
 ---
@@ -75,11 +73,10 @@ This plugin's MCP server (`genieseo`) connects to the hosted `https://seo.genied
 
 ---
 
-## Security & Privacy Compliance
+## Security & Privacy
 
 - **No Code Execution**: Contains no postinstall scripts, binary downloads, or shell execution.
-- **Data Protection**: Uses read-only OAuth scopes to query Google Search Console and GA4 data for the signed-in user. No user data is logged, sold, or used for model training.
-- **Brand Scoping**: All keywords and domains are product-scoped (`genieseo`, `google search console`, `ga4`).
+- **Data Protection**: Accesses only the signed-in user's Search Console and GA4 data. GA4 access is read-only; Search Console write actions (sitemaps, sites) run only on explicit request. See the [privacy policy](https://seo.geniedial.in/privacy) for how data is handled.
 
 ---
 

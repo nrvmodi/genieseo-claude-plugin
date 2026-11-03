@@ -34,3 +34,18 @@ the directory says they are safe to keep / left for the reviewer.
   `privacyPolicyUrl` (local CLI doesn't know it yet; the directory requires
   it) and `logo`. No MCP errors.
 - Confirm on the directory dashboard after the next scheduled scan.
+
+## Follow-up before merge (human-review risks)
+The automated policy didn't flag these, but the human reviewer reads the listing:
+- **Duplicate MCP definition removed.** The root `.mcp.json` (Claude Code
+  loads it by default) and `mcp.json` (named in the manifest) both defined
+  `genieseo`. That's a likely cause of `INVENTORY_GAPS`. `.mcp.json` is deleted.
+- **README keyword stuffing removed** ("SEO MCP, Google Search Console MCP,
+  GA4 MCP, keyword research MCP, rank tracking MCP…"), along with
+  unsupported product claims ("rank tracker", "full-time SEO analyst") and the
+  reviewer-aimed "Brand Scoping" bullet.
+- **Wrong "read-only" claim corrected.** The server requests
+  `https://www.googleapis.com/auth/webmasters` (read/write) for Search Console,
+  confirmed in `google-search-console-mcp/orchestrator/app/config.py`. Only
+  GA4 uses `analytics.readonly`. The README now says so and links the privacy
+  policy.
